@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+  	<meta charset="utf-8">
+  	<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  	<meta name="description" content="Your description goes here">
+  	<meta name="keywords" content="one, two, three">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Pixel Yetis</title>
+
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+		
+		<!-- External java script -->
+		<script type="text/javascript" src="js/main.js"></script>
+	</head>
+	<body>
+		<header class="showBorder">
+				<h1 class="showBorder">Pixel Yetis</h1>
+
+
+		</header>
+
+		<section class="mintInfo showBorder">
+
+			<ul class="minting showBorder">
+				<li class="showBorder" id="connectedWalletAddress">0x.....</li>
+				<li id="walletBalance">Balance: </li>
+				<li class="showBorder" id="mintPrice">Price: </li>
+				<li>
+					<button onclick="decAmount()" id="removeButton">-</button>
+					<span id="nftAmount">1</span>
+					<button onclick="addAmount()" id="addButton">+</button></li>
+				<li class="showBorder" id="supplyStats">0/420 minted</li>
+			</ul>
+			<section class="buttons">
+				<button
+					onclick="loginWithEth()"
+					class="showBorder" id="walletConnect" type="button">Connet Wallet</button>
+	
+				<button
+					onclick="approveSpending()"
+					class="showBorder hidden" id="approveButton" type="button">Approve</button>
+	
+				<button
+					onclick="mintNFT()"
+					class="showBorder hidden" id="mintButton" type="button">Mint</button>
+			</section>
+		</section>
+
+	</body>
+</html>
