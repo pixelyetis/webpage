@@ -32,22 +32,21 @@ body {
   /* border: 1px solid gray; */
 }
 
+body * {
+  /* border: 1px solid rgb(204, 202, 202); */
+}
+
 /******************************************
 /* LAYOUT
 /*******************************************/
-header {
+header, footer {
   width: 100%;
   height: 15vh;
+  
   display: flex;
   flex-direction: row;
   justify-content: center;
-  /*border: 2px solid red;*/
 
-  position: relative;
-  z-index: 3;
-}
-
-h1{
   color: white;
 }
 
@@ -66,8 +65,8 @@ section.mintInfo{
   align-items: center;
   justify-content: space-around;
 
-  z-index: 2;
-  position: absolute;
+  /* z-index: 2;
+  position: absolute; */
 }
 
 ul.minting{
@@ -112,6 +111,22 @@ section.buttons{
   margin: 20px;
 }
 
+footer ul{
+  width: 50%;
+  min-width: 300px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+footer ul li{
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+
+}
+
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
@@ -126,6 +141,11 @@ section.buttons{
   
 }
 
+@media (max-width: 1024px) {
+  footer ul{
+    flex-direction: column;
+  }
+}
 .hidden{
   display: none;
 }
