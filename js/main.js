@@ -19,14 +19,21 @@ const token = new web3.eth.Contract(tokenABI, tokenAddr)
 // const NETWORK_ID = 56;	// BSC Chain ID
 const NETWORK_ID = 5777;	// Truffle chain ID
 
-// async function init(){
-// 	console.log('init')
-// 	var container = document.getElementsByTagName("body")
-// 	for (var i = 0; i < 50; i++){
-// 		container.innerHTML += '<div class="snowflake"></div>'
-// 	}
+var images = 'sample' 	// Name of images
+const samples = 9		// How many samples are used
+let currentImg = 1
 
-// }
+function changeImage(){
+	// Go back to first image when we increment from the last one
+	if(currentImg > samples) currentImg = 1 
+
+	document.getElementsByClassName("imgs")[0].src = 'images/' + images + currentImg + '.png'
+	document.getElementsByClassName("imgs")[1].src = 'images/' + images + currentImg + '.png'
+
+	currentImg++
+}
+
+setInterval(changeImage, 1000)
 
 async function loginWithEth(){
 	if(!window.ethereum){

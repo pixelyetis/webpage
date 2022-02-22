@@ -27,7 +27,7 @@ body {
 }
 
 .showBorder{
-  /* border: 1px solid gray; */
+  border: 1px solid gray;
 }
 
 /******************************************
@@ -54,8 +54,9 @@ section.mintInfo{
   width: 100%;
   
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-around;
 
   z-index: 2;
   position: absolute;
@@ -82,6 +83,7 @@ button{
 }
 
 section.buttons{
+  margin-top: 30px;
   display: flex;
   justify-content: center;
 }
@@ -95,9 +97,26 @@ section.buttons{
 #mintButton{
 }
 
+.imgs{
+  width: 240px;
+  height: 240px;
+
+  margin: 20px;
+}
+
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+@media (max-width: 860px) {
+  section.mintInfo{
+    height: 1000px;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+}
 
 .hidden{
   display: none;
