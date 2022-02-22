@@ -12,21 +12,21 @@
 		<!-- external CSS link -->
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/style.css">
-		
+
 		<!-- External java script -->
 		<script type="text/javascript" src="js/main.js"></script>
-		<script type="text/javascript" src="js/snow.js"></script>
+		<!-- <script type="text/javascript" src="js/snow.js"></script> -->
 	</head>
 	<body>
-		<canvas id="sky"></canvas>
+		<!-- <canvas id="sky"></canvas> -->
 		<header class="showBorder">
 				<h1 class="showBorder">Pixel Yetis</h1>
 		</header>
 
-		
+
 		<section class="mintInfo showBorder">
 			<img src="images/sample1.png" class="imgs">
-			
+
 			<ul class="minting showBorder">
 				<li class="showBorder" id="connectedWalletAddress">0x.....</li>
 				<li id="walletBalance">Balance: </li>
@@ -40,11 +40,11 @@
 					<button
 						onclick="loginWithEth()"
 						class="showBorder" id="walletConnect" type="button">Connet Wallet</button>
-		
+
 					<button
 						onclick="approveSpending()"
 						class="showBorder hidden" id="approveButton" type="button">Approve</button>
-		
+
 					<button
 						onclick="mintNFT()"
 						class="showBorder hidden" id="mintButton" type="button">Mint</button>
