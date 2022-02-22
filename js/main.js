@@ -19,6 +19,15 @@ const token = new web3.eth.Contract(tokenABI, tokenAddr)
 // const NETWORK_ID = 56;	// BSC Chain ID
 const NETWORK_ID = 5777;	// Truffle chain ID
 
+// async function init(){
+// 	console.log('init')
+// 	var container = document.getElementsByTagName("body")
+// 	for (var i = 0; i < 50; i++){
+// 		container.innerHTML += '<div class="snowflake"></div>'
+// 	}
+
+// }
+
 async function loginWithEth(){
 	if(!window.ethereum){
 		alert('No ETH browser extension detected.')
@@ -33,7 +42,11 @@ async function loginWithEth(){
 		// debugger
 		await ethereum.enable();
 
-		init()
+		// Hide connect button when successfully connected
+		document.getElementById("walletConnect").classList.add("hidden")
+
+		// Update minting information on the webpage
+		updateInfo()
 
 	} catch(error){
 		console.error(error);
@@ -51,15 +64,6 @@ window.ethereum.on('accountsChanged', async function(accounts){
 window.ethereum.on('networkChanged', async function(networkId){
 	updateInfo()
 })
-
-async function init(){
-	// Hide connect button when successfully connected
-	document.getElementById("walletConnect").classList.add("hidden")
-
-	// Update minting information on the webpage
-	updateInfo()
-
-}
 
 async function approveSpending(){
 	const approvalAmount = '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff';
@@ -129,7 +133,9 @@ async function updateInfo(){
 	senderAddress = accounts[0]
 
 	// Show wallet address
-	document.getElementById("connectedWalletAddress").innerHTML = senderAddress
+	const addressCompressed = senderAddress.substring(0,6) + '.....' + senderAddress.substring(senderAddress.length - 4,senderAddress.length)
+	document.getElementById("connectedWalletAddress").innerHTML = addressCompressed
+	
 
 	// Update price for minting an NFT
 	const currentAmount = parseInt(document.getElementById("nftAmount").innerHTML) // Amount of NFTs to purchase
