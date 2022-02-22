@@ -104,7 +104,7 @@ section.buttons{
 }
 
 /******************************************
-/* Snow animation
+/* Snow animation - source: https://www.cssscript.com/demo/snowflakes-falling-effect-javascript-canvas/
 /*******************************************/
 .snowflake {
   position: absolute;
