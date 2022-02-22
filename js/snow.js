@@ -1,8 +1,6 @@
 // source: https://www.cssscript.com/demo/snowflakes-falling-effect-javascript-canvas/
 
 window.onload = function(){
-    console.log('hello');
-    
       //get the cancvas and context and store in vars
       var canvas = document.getElementById("sky");
       var ctx = canvas.getContext("2d");
