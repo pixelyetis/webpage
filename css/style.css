@@ -87,6 +87,8 @@ ul.minting{
 button{
   display: inline-block;
   text-align: center;
+  background: rgb(63,135,212);
+  color: rgb(202, 232, 241);
 }
 
 section.buttons{
