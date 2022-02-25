@@ -4,7 +4,7 @@ let senderAddress = accounts[0]
 
 
 // Address of contracts
-let yetiAddr = '0xF556575A409e1cA0b6f72488bE6b0Cfc52F8bF08'
+let yetiAddr = '0x25Fa96beb458ac1e05269A556ebA22203d582733'
 let tokenAddr = '0xFEDb2a3f89F269b4AbaCFbfF58eEEB5f5fcB91d1'
 
 // Get ABIs for contracts
