@@ -18,7 +18,8 @@ const token = new web3.eth.Contract(tokenABI, tokenAddr)
 
 // const NETWORK_ID = 56;	// BSC Chain ID
 // const NETWORK_ID = 5777;	// Truffle chain ID
-const NETWORK_ID = 4; 		// Rinkeby chain ID
+// const NETWORK_ID = 4; 		// Rinkeby chain ID
+const NETWORK_ID = 97; 		// BSC Testnet chain ID
 
 var images = 'sample' 	// Name of images
 const samples = 9		// How many samples are used
