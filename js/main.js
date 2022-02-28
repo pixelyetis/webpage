@@ -159,7 +159,7 @@ async function updateInfo(){
 
 	// Update wallet token balance
 	const balance = web3.utils.fromWei(await token.methods.balanceOf(senderAddress.toString()).call(), 'ether')
-	document.getElementById("walletBalance").innerHTML = 'Balance: ' + balance + ' ' + tokenSymb
+	document.getElementById("walletBalance").innerHTML = 'Balance: ' + parseInt(balance) + ' ' + tokenSymb
 
 	// Decide whether to show approve or mint based on whether the wallet can make the purchase or not.
 	const approvalAmount = await token.methods.allowance(senderAddress, yetiAddr).call()
