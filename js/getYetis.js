@@ -18,13 +18,17 @@ let yeti = new web3.eth.Contract(yetiABI, yetiAddr)
 let token = new web3.eth.Contract(tokenABI, tokenAddr)
 
 
-// const NETWORK_ID = 56;	// BSC Chain ID
-const NETWORK_ID = 5777;	// Truffle chain ID
+const NETWORK_ID = 56;	// BSC Chain ID
+// const NETWORK_ID = 5777;	// Truffle chain ID
 // const NETWORK_ID = 4; 		// Rinkeby chain ID
 // const NETWORK_ID = 97; 		// BSC Testnet chain ID
 
 
 window.ethereum.on('accountsChanged', async function(accounts){
+	updateInfo()
+})
+
+window.ethereum.on('networkChanged', async function(networkId){
 	updateInfo()
 })
 
@@ -60,6 +64,21 @@ async function loginWithEth(){
 	// debugger
 }
 async function updateInfo(){
+    // Guard clause for chain id.
+	if(await web3.eth.net.getId() != NETWORK_ID) {
+
+        var newHeading = document.createElement("p")
+        newHeading.appendChild(document.createTextNode('Wrong Network!'))
+        
+        var newSection = document.createElement("section")
+        newSection.appendChild(newHeading)
+        newSection.classList.add('myYetis')
+        document.getElementById("allimages").appendChild(newSection)
+
+		
+		alert('Wrong network!')
+		return
+	}
     loginWithEth()
     accounts = await web3.eth.getAccounts();
     senderAddress = accounts[0]
