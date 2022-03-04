@@ -14,15 +14,20 @@
 		<link rel="stylesheet" href="css/showyetistyle.css">
 
 		<!-- External java script -->
-		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/getYetis.js"></script>
+        <!-- <script type="text/javascript" src="js/main.js"></script> -->
 		<!-- <script type="text/javascript" src="js/snow.js"></script> -->
 	</head>
-	<body onload="getMyYetis()">
+	<body onload="updateInfo()">
 		<!-- <canvas id="sky"></canvas> -->
 		<header class="showBorder">
 				<h1 class="showBorder">Pixel Yetis</h1>
 		</header>
-
+        <section id="buttons">
+            <button
+                            onclick="loginWithEth()"
+                            class="showBorder" id="walletConnect" type="button">Connect Wallet</button>
+        </section>
         <section id="allimages">
             <!-- <img src="#" alt="" class="temp"> -->
         </section>
