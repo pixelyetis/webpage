@@ -18,8 +18,8 @@ let yeti = new web3.eth.Contract(yetiABI, yetiAddr)
 let token = new web3.eth.Contract(tokenABI, tokenAddr)
 
 
-// const NETWORK_ID = 56;	// BSC Chain ID
-const NETWORK_ID = 5777;	// Truffle chain ID
+const NETWORK_ID = 56;	// BSC Chain ID
+// const NETWORK_ID = 5777;	// Truffle chain ID
 // const NETWORK_ID = 4; 		// Rinkeby chain ID
 // const NETWORK_ID = 97; 		// BSC Testnet chain ID
 
@@ -172,7 +172,7 @@ async function updateInfo(){
 	// console.log(approvalAmount <= web3.utils.toWei(nftPrice)*currentAmount)
 	if(approvalAmount >= web3.utils.toWei(nftPrice)*currentAmount){
 		// Approval enough. Show mint button.
-		document.getElementById("buttons").style.display = "none"
+		document.getElementById("approveButton").style.display = "none"
 		document.getElementById("mintButton").style.display = "block"
 	}else{
 		// Approval not enough. Show approval button.
