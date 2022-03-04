@@ -1,0 +1,78 @@
+/* Box Model Hack */
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Clear fix hack */
+  .clearfix:after {
+       content: ".";
+       display: block;
+       clear: both;
+       visibility: hidden;
+       line-height: 0;
+       height: 0;
+  }
+  
+  .clear {
+      clear: both;
+  }
+  
+  /******************************************
+  /* BASE STYLES
+  /*******************************************/
+  
+  body {
+    box-sizing: border-box ;
+    background: rgb(85,176,244);
+    background: radial-gradient(circle, rgba(85,176,244,1) 10%, rgba(1,15,124,1) 100%);
+  }
+  
+  .showBorder{
+    /* border: 1px solid gray; */
+  }
+  
+  body * {
+    /* border: 1px solid rgb(204, 202, 202); */
+  }
+  
+  /******************************************
+  /* LAYOUT
+  /*******************************************/
+  header, footer {
+    width: 100%;
+    height: 15vh;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  
+    color: white;
+  }
+  
+  ul{
+    list-style: none;
+    padding: 0;
+  }
+  #allimages{
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      flex-direction: row;
+  }
+  .myYetis{
+      color: white;
+      width: 320px;
+      margin: 10px;
+  }
+  img{
+      width: 100%;
+  }
+  /******************************************
+  /* ADDITIONAL STYLES
+  /*******************************************/
+
+  
+  /******************************************
+  /* Snow animation - source: https://www.cssscript.com/demo/snowflakes-falling-effect-javascript-canvas/
+  /*******************************************/
