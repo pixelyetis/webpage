@@ -100,10 +100,16 @@ async function getMyYetis(){
         newSection.classList.add('myYetis')
         document.getElementById("allimages").appendChild(newSection)
         
-        console.log('Yeti amount: ' + yetiAmount)
         return
     }
 	
+	var newMessage = document.createElement("p")
+	newMessage.appendChild(document.createTextNode('Fetching Pixel Yetis, please wait...'))
+	newMessage.id = 'message'
+
+	document.getElementById("buttons").appendChild(newMessage)
+	
+
 	let imgBase = 'https://pye.fra1.digitaloceanspaces.com/images/'
 	
 	for(let i = 1; i <= await yeti.methods.totalSupply().call(); i++){
@@ -121,6 +127,6 @@ async function getMyYetis(){
 			document.getElementById("allimages").appendChild(newSection)
 		}
 	}
+	document.getElementById("buttons").innerHTML = ""
 	
-	console.log(document.getElementById("allimages"))
 }

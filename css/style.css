@@ -55,6 +55,11 @@ ul{
   padding: 0;
 }
 
+h1 *{
+  color: white;
+  text-decoration: none;
+}
+
 section.mintInfo{
   height: 600px;
   min-height: 400px;

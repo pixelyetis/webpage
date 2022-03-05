@@ -54,7 +54,10 @@
     list-style: none;
     padding: 0;
   }
-
+  h1 *{
+    color: white;
+    text-decoration: none;
+  }
   #buttons{
       width: 100%;
       display: flex;
@@ -78,9 +81,10 @@
       width: 320px;
       margin: 10px;
   }
-  .myYetis p {
+  #message {
       width: 100%;
       text-align: center;
+      color: white;
   }
   img{
       width: 100%;
