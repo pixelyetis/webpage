@@ -42,26 +42,18 @@ async function loginWithEth(){
 		return
 	}
 
-	
 	web3 = new Web3(ethereum);
-	// web3 = _web3
 
 	try{
-		// debugger
 		await ethereum.enable();
 
 		// Hide connect button when successfully connected        
         document.getElementById("walletConnect").style.display = "none"
         
-        // updateInfo()
-        
 	} catch(error){
         console.error(error);
         document.getElementById("walletConnect").style.display = "block"
 	}
-    
-    
-	// debugger
 }
 async function updateInfo(){
     // Guard clause for chain id.

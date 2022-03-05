@@ -46,13 +46,10 @@ async function loginWithEth(){
 		alert('No ETH browser extension detected.')
 		return
 	}
-
 	
 	web3 = new Web3(ethereum);
-	// web3 = _web3
 
 	try{
-		// debugger
 		await ethereum.enable();
 
 		// Hide connect button when successfully connected
@@ -64,9 +61,6 @@ async function loginWithEth(){
 	} catch(error){
 		console.error(error);
 	}
-
-
-	// debugger
 }
 
 window.ethereum.on('accountsChanged', async function(accounts){
@@ -93,9 +87,6 @@ async function approveSpending(){
 			gas: gasEstimate,
 			gasPrice: gasPrice
 		})
-
-		// console.log('Token allowance: ' + await token.methods.allowance(senderAddress, yetiAddr).call())
-		// console.log('Approval successful!')
 
 		updateInfo()
 
@@ -167,9 +158,7 @@ async function updateInfo(){
 
 	// Decide whether to show approve or mint based on whether the wallet can make the purchase or not.
 	const approvalAmount = await token.methods.allowance(senderAddress, yetiAddr).call()
-	// console.log(approvalAmount)
-	// console.log(web3.utils.toWei(nftPrice)*currentAmount)
-	// console.log(approvalAmount <= web3.utils.toWei(nftPrice)*currentAmount)
+	
 	if(approvalAmount >= web3.utils.toWei(nftPrice)*currentAmount){
 		// Approval enough. Show mint button.
 		document.getElementById("approveButton").style.display = "none"
