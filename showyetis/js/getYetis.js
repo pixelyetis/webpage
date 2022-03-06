@@ -104,20 +104,20 @@ async function getMyYetis(){
 
 	let imgBase = 'https://pye.fra1.digitaloceanspaces.com/images/'
 	
-	for(let i = 1; i <= await yeti.methods.totalSupply().call(); i++){
-		if(await yeti.methods.ownerOf(i).call() == senderAddress){
-			var pText = document.createElement("h2")
-			pText.appendChild(document.createTextNode('Pixel Yeti #'+i))
-			
-			var newImg = document.createElement("img")
-			newImg.src = imgBase + i + '.png'
+	for(let i = 0; i < yetiAmount; i++){
+		let index = await yeti.methods.tokenOfOwnerByIndex(senderAddress, i).call()
 
-			var newSection = document.createElement("section")
-			newSection.appendChild(pText)
-			newSection.appendChild(newImg)
-			newSection.classList.add('myYetis')
-			document.getElementById("allimages").appendChild(newSection)
-		}
+		var pText = document.createElement("h2")
+		pText.appendChild(document.createTextNode('Pixel Yeti #' + index))
+		
+		var newImg = document.createElement("img")
+		newImg.src = imgBase + index + '.png'
+
+		var newSection = document.createElement("section")
+		newSection.appendChild(pText)
+		newSection.appendChild(newImg)
+		newSection.classList.add('myYetis')
+		document.getElementById("allimages").appendChild(newSection)
 	}
 	document.getElementById("buttons").innerHTML = ""
 	
