@@ -1,8 +1,9 @@
-let web3 = new Web3(ethereum);
+const BSCRPC = 'https://bsc-dataseed1.binance.org';
+const provider = new Web3.providers.HttpProvider(BSCRPC);
+let web3 = new Web3(provider);
 
 var accounts
 var senderAddress
-
 
 // Address of contracts
 let yetiAddr = '0xc4acb22b5959d74c65d431ad69df91d94e9c96f9'
@@ -55,11 +56,9 @@ async function loginWithEth(){
 		// Hide connect button when successfully connected
 		document.getElementById("walletConnect").classList.add("hidden")
 
-		// Update minting information on the webpage
-		updateInfo()
-
 	} catch(error){
 		console.error(error);
+		web3 = new Web3(provider);
 	}
 }
 
@@ -120,6 +119,8 @@ function addAmount(){
 
 async function updateInfo(){
 
+	loginWithEth()
+
 	// Guard clause for chain id.
 	if(await web3.eth.net.getId() != NETWORK_ID) {
 
@@ -135,12 +136,7 @@ async function updateInfo(){
 
 	accounts = await web3.eth.getAccounts();
 	senderAddress = accounts[0]
-
-	// Show wallet address
-	const addressCompressed = senderAddress.substring(0,6) + '.....' + senderAddress.substring(senderAddress.length - 4,senderAddress.length)
-	document.getElementById("connectedWalletAddress").innerHTML = addressCompressed
 	
-
 	// Update price for minting an NFT
 	const currentAmount = parseInt(document.getElementById("nftAmount").innerHTML) // Amount of NFTs to purchase
 	const nftPrice = web3.utils.fromWei(await yeti.methods.mintPrice().call(), 'ether') // Price per NFT
@@ -152,22 +148,29 @@ async function updateInfo(){
 	const maxSupply = await yeti.methods.MAX_SUPPLY().call()		// NFT supply cap
 	document.getElementById("supplyStats").innerHTML = currentSupply + '/' + maxSupply + ' minted'
 
-	// Update wallet token balance
-	const balance = web3.utils.fromWei(await token.methods.balanceOf(senderAddress.toString()).call(), 'ether')
-	document.getElementById("walletBalance").innerHTML = 'Balance: ' + parseInt(balance) + ' ' + tokenSymb
-
-	// Decide whether to show approve or mint based on whether the wallet can make the purchase or not.
-	const approvalAmount = await token.methods.allowance(senderAddress, yetiAddr).call()
-	
-	if(approvalAmount >= web3.utils.toWei(nftPrice)*currentAmount){
-		// Approval enough. Show mint button.
-		document.getElementById("approveButton").style.display = "none"
-		document.getElementById("mintButton").style.display = "block"
-	}else{
-		// Approval not enough. Show approval button.
-		document.getElementById("approveButton").style.display = "block"
-		document.getElementById("mintButton").style.display = "none"
+	if(senderAddress != null){
+		// Show wallet address
+		const addressCompressed = senderAddress.substring(0,6) + '.....' + senderAddress.substring(senderAddress.length - 4,senderAddress.length)
+		document.getElementById("connectedWalletAddress").innerHTML = addressCompressed
+		
+		// Update wallet token balance
+		const balance = web3.utils.fromWei(await token.methods.balanceOf(senderAddress.toString()).call(), 'ether')
+		document.getElementById("walletBalance").innerHTML = 'Balance: ' + parseInt(balance) + ' ' + tokenSymb
+		
+		// Decide whether to show approve or mint based on whether the wallet can make the purchase or not.
+		const approvalAmount = await token.methods.allowance(senderAddress, yetiAddr).call()
+		
+		if(approvalAmount >= web3.utils.toWei(nftPrice)*currentAmount){
+			// Approval enough. Show mint button.
+			document.getElementById("approveButton").style.display = "none"
+			document.getElementById("mintButton").style.display = "block"
+		}else{
+			// Approval not enough. Show approval button.
+			document.getElementById("approveButton").style.display = "block"
+			document.getElementById("mintButton").style.display = "none"
+		}
 	}
+
 }
 
 async function mintNFT(){
