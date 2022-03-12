@@ -80,13 +80,6 @@ async function updateInfo() {
 	senderAddress = accounts[0]
 
 	getYetis(await game.methods.owner().call())
-
-	// let receipt = await token.methods.approve(await yeti._address, '0xffffffffffffffffffffff').send({
-	// 	from: senderAddress,
-	// 	gas: await token.methods.approve(await yeti._address, '0xffffffffffffffffffffff').estimateGas({from: senderAddress}),
-	// 	gasPrice: await web3.eth.getGasPrice()*2
-	// })
-
 }
 async function getYetis(_address) {
 	document.getElementById("allimages").innerHTML = ""
@@ -96,7 +89,7 @@ async function getYetis(_address) {
 	// Wallet owner has no Pixel Yetis guard clause
 	if (yetiAmount === 0) {
 		var newHeading = document.createElement("p")
-		newHeading.appendChild(document.createTextNode('No Pixel Yetis found for this wallet!'))
+		newHeading.appendChild(document.createTextNode('No Pixel Yetis found!'))
 
 		var newSection = document.createElement("section")
 		newSection.appendChild(newHeading)
