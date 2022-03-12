@@ -75,10 +75,11 @@ async function approveSpending(){
 	const approvalAmount = '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff';
 
 	try{
-		let gasPrice = await web3.eth.getGasPrice() * 2
+		let gasPrice = await web3.eth.getGasPrice()
 		let gasEstimate = await token.methods.approve(yetiAddr, approvalAmount).estimateGas({
 			from: senderAddress
 		})
+		gasEstimate *= 2
 		// console.log('Estimated maximum gas price is: ' + web3.utils.fromWei((gasEstimate*gasPrice).toString(), 'ether'));
 
 		let receipt = await token.methods.approve(yetiAddr, approvalAmount).send({
@@ -179,8 +180,8 @@ async function mintNFT(){
 		const price = await yeti.methods.mintPrice().call()
 		const total = web3.utils.toHex(amount*price)
 
-		let gasPrice = await web3.eth.getGasPrice() * 2
-		let gasEstimate = await yeti.methods.mintYeti(amount.toString()).estimateGas({from: senderAddress})
+		let gasPrice = await web3.eth.getGasPrice()
+		let gasEstimate = await yeti.methods.mintYeti(amount.toString()).estimateGas({from: senderAddress}) * 2
 		
 		let receipt = await yeti.methods.mintYeti(amount.toString()).send({
 			from: senderAddress,
