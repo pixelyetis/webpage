@@ -136,8 +136,8 @@ async function shoot(_mul, _index) {
 			// This is necessary to allow contract to send funds for taking a shot.
 			receipt = await token.methods.approve(await game._address, '0xffffffffffffffffffffff').send({
 				from: senderAddress,
-				gas: await token.methods.approve(await game._address, '0xffffffffffffffffffffff').estimateGas({ from: senderAddress }),
-				gasPrice: await web3.eth.getGasPrice() * 2
+				gas: await token.methods.approve(await game._address, '0xffffffffffffffffffffff').estimateGas({ from: senderAddress }) * 2,
+				gasPrice: await web3.eth.getGasPrice()
 			})
 		} catch (err) {
 			console.log(err)
@@ -145,13 +145,10 @@ async function shoot(_mul, _index) {
 	}
 	
 	try {
-		let gasPrice = await web3.eth.getGasPrice() * 2
-		let gasEstimate = await game.methods.takeAShot(_mul, _index).estimateGas({ from: senderAddress })
-
 		let receipt = await game.methods.takeAShot(_mul, _index).send({
 			from: senderAddress,
-			gas: gasEstimate,
-			gasPrice: gasPrice
+			gas: await game.methods.takeAShot(_mul, _index).estimateGas({ from: senderAddress }) * 2,
+			gasPrice: await web3.eth.getGasPrice()
 		})
 		console.log(receipt)
 		updateInfo()
