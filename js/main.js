@@ -1,6 +1,4 @@
-const BSCRPC = 'https://bsc-dataseed1.binance.org';
-const provider = new Web3.providers.HttpProvider(BSCRPC);
-let web3 = new Web3(provider);
+let web3 = new Web3(ethereum);
 
 var accounts
 var senderAddress
@@ -58,7 +56,6 @@ async function loginWithEth(){
 
 	} catch(error){
 		console.error(error);
-		web3 = new Web3(provider);
 	}
 }
 
