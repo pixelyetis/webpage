@@ -135,6 +135,11 @@ async function updateShotInfo(){
 	if(accuracy < 1) accuracy = 1
 	if(accuracy > 100) accuracy = 100
 	
+	if(!Number.isFinite(accuracy)){
+		alert('Accuracy must be a number!')
+		document.getElementById("accuracy").value = 10
+	}
+
 	let cost = web3.utils.fromWei(await game.methods.baseShot().call(), 'ether') // Price per NFT
 	let tokenName = await token.methods.symbol().call()
 
