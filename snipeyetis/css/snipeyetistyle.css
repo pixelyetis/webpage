@@ -70,6 +70,21 @@
     color: rgb(202, 232, 241);
   }
 
+  #shot{
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+    color: white;
+  }
+
+ form{
+    width: 40px;
+    margin: 10px;
+  }
+  #accuracy{
+    width: 100%;
+  }
+
   #allimages{
       display: flex;
       justify-content: space-evenly;

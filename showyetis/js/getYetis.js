@@ -5,8 +5,8 @@ var senderAddress
 
 
 // Address of contracts
-let yetiAddr = '0xc4acb22b5959d74c65d431ad69df91d94e9c96f9'
-let tokenAddr = '0x9a946c3Cb16c08334b69aE249690C236Ebd5583E'
+let yetiAddr = '0x13Cc484374101C0DE031c93c21224A08f8E80889'
+let tokenAddr = '0xFEDb2a3f89F269b4AbaCFbfF58eEEB5f5fcB91d1'
 
 
 // Get ABIs for contracts
@@ -18,10 +18,10 @@ let yeti = new web3.eth.Contract(yetiABI, yetiAddr)
 let token = new web3.eth.Contract(tokenABI, tokenAddr)
 
 
-const NETWORK_ID = 56;	// BSC Chain ID
+// const NETWORK_ID = 56;	// BSC Chain ID
 // const NETWORK_ID = 5777;	// Truffle chain ID
 // const NETWORK_ID = 4; 		// Rinkeby chain ID
-// const NETWORK_ID = 97; 		// BSC Testnet chain ID
+const NETWORK_ID = 97; 		// BSC Testnet chain ID
 
 
 window.ethereum.on('accountsChanged', async function(accounts){

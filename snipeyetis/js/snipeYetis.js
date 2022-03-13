@@ -3,13 +3,12 @@ let web3 = new Web3(ethereum);
 var accounts
 var senderAddress
 
-
 // Address of contracts
 // let yetiAddr = '0xc4acb22b5959d74c65d431ad69df91d94e9c96f9'
 // let tokenAddr = '0x9a946c3Cb16c08334b69aE249690C236Ebd5583E'
-let yetiAddr = '0x11FD417D59c4a1AA54CD8F418b0720f60C4cf406'
-let tokenAddr = '0x8c7a60ac2B87CDFfD7b3d9d5e3F8f814d4D596a2'
-let gameAddr = '0xA4eec4553a0b1850Ad5f1B665258B1a32e8952D7'
+let yetiAddr = '0x13Cc484374101C0DE031c93c21224A08f8E80889'
+let tokenAddr = '0xFEDb2a3f89F269b4AbaCFbfF58eEEB5f5fcB91d1'
+let gameAddr = '0x6b8390AE6740e63F8A1549EB9cde4f8784893182'
 
 
 // Get ABIs for contracts
@@ -23,9 +22,9 @@ let token = new web3.eth.Contract(tokenABI, tokenAddr)
 let game = new web3.eth.Contract(gameABI, gameAddr)
 
 // const NETWORK_ID = 56;	// BSC Chain ID
-const NETWORK_ID = 5777;	// Truffle chain ID
+// const NETWORK_ID = 5777;	// Truffle chain ID
 // const NETWORK_ID = 4; 		// Rinkeby chain ID
-// const NETWORK_ID = 97; 		// BSC Testnet chain ID
+const NETWORK_ID = 97; 		// BSC Testnet chain ID
 
 
 window.ethereum.on('accountsChanged', async function (accounts) {
@@ -38,7 +37,7 @@ window.ethereum.on('networkChanged', async function (networkId) {
 
 async function init() {
 	updateInfo()
-
+	setInterval(updateShotInfo, 1000)
 }
 async function loginWithEth() {
 	if (!window.ethereum) {
@@ -126,9 +125,37 @@ async function getYetis(_address) {
 	}
 	document.getElementById("buttons").innerHTML = ""
 
+	document.getElementById("accuracy").addEventListener('change', updateShotInfo())
+}
+
+async function updateShotInfo(){
+	let accuracy = Number(document.getElementById("accuracy").value)
+	
+	// Correct accuracy if it is too low or too high
+	if(accuracy < 1) accuracy = 1
+	if(accuracy > 100) accuracy = 100
+	
+	let cost = web3.utils.fromWei(await game.methods.baseShot().call(), 'ether') // Price per NFT
+	let tokenName = await token.methods.symbol().call()
+
+	document.getElementById("accuracy").value = accuracy
+	document.getElementById("accuracyText").innerHTML = 'Shot Accuracy (' + accuracy + '%)'
+	document.getElementById("cost").innerHTML = 'Shot cost: ' + cost*accuracy + ' ' + tokenName
 }
 
 async function shoot(_mul, _index) {
+	
+	let accuracy = Number(document.getElementById("accuracy").value)
+	// Guard clause for ensuring accuracy is a number
+	if(!Number.isFinite(accuracy)){
+		alert('Accuracy must be a number!')
+		document.getElementById("accuracy").value = 10
+		return
+	}
+	
+
+	updateShotInfo()
+	
 	// Check if game contract allowance is enough.
 	if (Number(await token.methods.allowance(senderAddress, await game._address).call()) < Number(await game.methods.baseShot().call())){
 		try {
