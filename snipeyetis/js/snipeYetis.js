@@ -120,7 +120,7 @@ async function getYetis(_address) {
 
 		var newImg = document.createElement("img")
 		newImg.src = imgBase + index + '.png'
-		newImg.setAttribute('onclick', 'shoot(' + 100 + ',' + index + ')')
+		newImg.setAttribute('onclick', 'shoot(' + index + ')')
 
 		var newSection = document.createElement("section")
 		newSection.appendChild(heading)
@@ -153,7 +153,7 @@ async function updateShotInfo(){
 	document.getElementById("cost").innerHTML = 'Shot cost: ' + cost*accuracy + ' ' + tokenName
 }
 
-async function shoot(_mul, _index) {
+async function shoot(_index) {
 	
 	let accuracy = Number(document.getElementById("accuracy").value)
 	// Guard clause for ensuring accuracy is a number
@@ -165,7 +165,6 @@ async function shoot(_mul, _index) {
 	
 
 	updateShotInfo()
-	
 	// Check if game contract allowance is enough.
 	if (Number(await token.methods.allowance(senderAddress, await game._address).call()) < Number(await game.methods.baseShot().call())){
 		try {
@@ -182,9 +181,9 @@ async function shoot(_mul, _index) {
 	}
 	
 	try {
-		let receipt = await game.methods.takeAShot(_mul, _index).send({
+		let receipt = await game.methods.takeAShot(accuracy, _index).send({
 			from: senderAddress,
-			gas: await game.methods.takeAShot(_mul, _index).estimateGas({ from: senderAddress }) * 2,
+			gas: await game.methods.takeAShot(accuracy, _index).estimateGas({ from: senderAddress }) * 2,
 			gasPrice: await web3.eth.getGasPrice()
 		})
 		console.log(receipt)
