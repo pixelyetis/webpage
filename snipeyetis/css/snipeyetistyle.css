@@ -85,6 +85,14 @@
     width: 100%;
   }
 
+  #season{
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+  }
+
   #allimages{
       display: flex;
       justify-content: space-evenly;
