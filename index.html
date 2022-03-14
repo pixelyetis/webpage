@@ -17,35 +17,35 @@
 		<script type="text/javascript" src="js/main.js"></script>
 	</head>
 	<body onload="updateInfo()">
-		<header class="showBorder">
-			<h1 class="showBorder"><a href="/">Pixel Yetis</a></h1>
+		<header >
+			<h1 ><a href="/">Pixel Yetis</a></h1>
 		</header>
+		
 
-
-		<section class="mintInfo showBorder">
+		<section class="mintInfo ">
 			<img src="images/sample1.png" class="imgs">
 
-			<ul class="minting showBorder">
-				<li class="showBorder" id="connectedWalletAddress">0x.....</li>
+			<ul class="minting ">
+				<li  id="connectedWalletAddress">0x.....</li>
 				<li id="walletBalance">Balance: </li>
-				<li class="showBorder" id="mintPrice">Price: </li>
+				<li  id="mintPrice">Price: </li>
 				<li>
 					<button onclick="decAmount()" id="removeButton">-</button>
 					<span id="nftAmount">1</span>
 					<button onclick="addAmount()" id="addButton">+</button></li>
-				<li class="showBorder" id="supplyStats">0/420 minted</li>
+				<li  id="supplyStats">0/420 minted</li>
 				<section class="buttons">
 					<button
 						onclick="loginWithEth()"
-						class="showBorder" id="walletConnect" type="button">Connect Wallet</button>
+						 id="walletConnect" type="button">Connect Wallet</button>
 
 					<button
 						onclick="approveSpending()"
-						class="showBorder hidden" id="approveButton" type="button">Approve</button>
+						class=" hidden" id="approveButton" type="button">Approve</button>
 
 					<button
 						onclick="mintNFT()"
-						class="showBorder hidden" id="mintButton" type="button">Mint</button>
+						class=" hidden" id="mintButton" type="button">Mint</button>
 				</section>
 			</ul>
 			<img src="images/sample1.png" class="imgs">
