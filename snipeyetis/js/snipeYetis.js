@@ -48,7 +48,7 @@ async function loginWithEth() {
 	try {
 		await ethereum.enable();
 
-		// Hide connect button when successfully connected        
+		// Hide connect button when successfully connected
 		document.getElementById("walletConnect").style.display = "none"
 
 	} catch (error) {
@@ -135,11 +135,11 @@ async function getYetis(_address) {
 
 async function updateShotInfo(){
 	let accuracy = Number(document.getElementById("accuracy").value)
-	
+
 	// Correct accuracy if it is too low or too high
 	if(accuracy < 1) accuracy = 1
 	if(accuracy > 100) accuracy = 100
-	
+
 	if(!Number.isFinite(accuracy)){
 		alert('Accuracy must be a number!')
 		document.getElementById("accuracy").value = 10
@@ -154,7 +154,7 @@ async function updateShotInfo(){
 }
 
 async function shoot(_index) {
-	
+
 	let accuracy = Number(document.getElementById("accuracy").value)
 	// Guard clause for ensuring accuracy is a number
 	if(!Number.isFinite(accuracy)){
@@ -162,7 +162,7 @@ async function shoot(_index) {
 		document.getElementById("accuracy").value = 10
 		return
 	}
-	
+
 
 	updateShotInfo()
 	// Check if game contract allowance is enough.
@@ -179,7 +179,7 @@ async function shoot(_index) {
 			console.log(err)
 		}
 	}
-	
+
 	try {
 		let receipt = await game.methods.takeAShot(accuracy, _index).send({
 			from: senderAddress,
@@ -191,5 +191,9 @@ async function shoot(_index) {
 
 	} catch (err) {
 		console.log(err)
+		err.message.includes("No Pixel Yetis found.")? alert("No Pixel Yetis found in your wallet! Please mint a Pixel Yetis in order to take a shot at one here."):null
+		
+		// let msg = err.message.split('\n')[3].split(':')[2].slice(0,-2)
+		// err.message.includes("")? alert(""):null
 	}
 }
