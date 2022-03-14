@@ -28,9 +28,9 @@ body {
 }
 
 
-/* body * {
+body * {
   border: 1px solid rgb(204, 202, 202);
-} */
+}
 
 /******************************************
 /* LAYOUT
@@ -51,6 +51,30 @@ header, footer {
 footer{
   justify-content: center;
   border: none;
+}
+
+.container {
+  display: none;
+  cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color:  rgb(204, 202, 202);
+  margin: 6px 0;
+  transition: 0.4s;
+}
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
 }
 
 h1 *{
@@ -93,4 +117,48 @@ a{
 ul{
   list-style: none;
   padding: 0;
+}
+
+@media (max-width: 860px) {
+  nav{
+    display: none;
+  }
+  header{
+    justify-content: center;
+  }
+  .container{
+    display: block;
+    margin: 20px;
+    margin-left: auto;
+  }
+  
+
+  header.change {
+    /* width: 100%; */
+    height: 40vh;
+    /* float: right; */
+    
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* align-items: center; */
+  }
+  nav.change{
+    display: flex;
+    width: 100%;
+  }
+  ul.change{
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+  }
+  ul.change *{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  
 }

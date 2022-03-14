@@ -26,6 +26,16 @@ const samples = 9		// How many samples are used
 let currentImg = 1
 var stopUpdate = false
 
+function dropdown(x) {
+	x.classList.toggle("change");
+	document.getElementsByTagName("header")[0].classList.toggle("change")
+	document.getElementsByTagName("nav")[0].classList.toggle("change")
+	document.getElementById("navul").classList.toggle("change")
+	document.getElementsByClassName("navli")[0].classList.toggle("change")
+	document.getElementsByClassName("navli")[1].classList.toggle("change")
+	document.getElementsByClassName("navli")[2].classList.toggle("change")
+  }
+
 function changeImage(){
 	if(stopUpdate) return
 	// Go back to first image when we increment from the last one
