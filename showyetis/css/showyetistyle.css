@@ -33,6 +33,11 @@ button{
 img{
     width: 100%;
 }
+
+#gallerypage{
+    background-color: rgb(58, 98, 197);
+  }
+  
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
