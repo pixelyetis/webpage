@@ -107,7 +107,7 @@ nav ul{
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-end;
 }
 nav ul li{
   height: 100%;
@@ -152,6 +152,7 @@ ul{
     height: 75%;
   }
   ul.change{
+    justify-content: space-evenly;
     flex-direction: column;
     width: 100%;
     padding: 0;
