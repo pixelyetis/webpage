@@ -130,6 +130,10 @@ ul{
     display: block;
     margin: 20px;
     margin-left: auto;
+    float: right;
+  }
+  h1 {
+    margin-left: calc(50% - 90px)
   }
   
 
