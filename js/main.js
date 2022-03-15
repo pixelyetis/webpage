@@ -34,6 +34,7 @@ function dropdown(x) {
 	document.getElementsByClassName("navli")[0].classList.toggle("change")
 	document.getElementsByClassName("navli")[1].classList.toggle("change")
 	document.getElementsByClassName("navli")[2].classList.toggle("change")
+	document.getElementsByTagName("h1")[0].classList.toggle("change")
 }
 
 window.ethereum.on('accountsChanged', async function (accounts) {

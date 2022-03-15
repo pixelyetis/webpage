@@ -164,5 +164,7 @@ ul{
     align-items: center;
   }
 
-  
+  h1.change{
+    margin-left: 0px;
+  }
 }
