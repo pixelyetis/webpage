@@ -48,6 +48,9 @@ header, footer {
   color: white;
   border-bottom: 1px solid rgb(204, 202, 202);
 }
+#hdr{
+  background-color: rgb(202,232,241);
+}
 footer{
   justify-content: center;
   border: none;
@@ -56,6 +59,8 @@ footer{
 .container {
   display: none;
   cursor: pointer;
+  width: 40px;
+  float: right;
 }
 
 .bar1, .bar2, .bar3 {
@@ -89,7 +94,7 @@ nav{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  float: left;
+  /* float: left; */
 }
 nav *{
   color: white;
@@ -102,7 +107,7 @@ nav ul{
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-evenly;
 }
 nav ul li{
   height: 100%;
@@ -138,17 +143,13 @@ ul{
   
 
   header.change {
-    /* width: 100%; */
     height: 40vh;
-    /* float: right; */
-    
-    flex-direction: column;
-    /* justify-content: space-between; */
-    /* align-items: center; */
+    display: block; 
   }
   nav.change{
     display: flex;
     width: 100%;
+    height: 75%;
   }
   ul.change{
     flex-direction: column;
@@ -163,8 +164,11 @@ ul{
     justify-content: center;
     align-items: center;
   }
+  .navli.change{
+    height: 33.3333%;
+  }
 
   h1.change{
-    margin-left: 0px;
+    float: left;
   }
 }
