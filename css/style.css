@@ -37,9 +37,8 @@ body {
 /*******************************************/
 header, footer {
   width: 100%;
-  height: 10vh;
   margin-bottom: 40px;
-  
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -54,6 +53,20 @@ header, footer {
 footer{
   justify-content: center;
   border: none;
+}
+#buyxblzd section{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+#buyxblzd *{
+  margin: 0 5px;
+}
+#buyxblzd img{
+  width: 30px;
+  height: 30px;
 }
 
 .container {
@@ -94,7 +107,6 @@ nav{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  /* float: left; */
 }
 nav *{
   color: white;
@@ -110,14 +122,19 @@ nav ul{
   justify-content: flex-end;
 }
 nav ul li{
-  height: 100%;
+  height: 8vh;
   display: flex;
   align-items: center;
   padding: 0 20px;
   font-size: 18px;
 }
+.navli *{
+  display: flex;
+  align-items: center;
+}
 a{
   text-decoration: none;
+  height: 100%;
 }
 ul{
   list-style: none;
@@ -140,11 +157,10 @@ ul{
   h1 {
     margin-left: calc(50% - 90px)
   }
-  
+
 
   header.change {
-    height: 40vh;
-    display: block; 
+    display: block;
   }
   nav.change{
     display: flex;
@@ -159,14 +175,14 @@ ul{
   }
   ul.change *{
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .navli.change{
-    height: 33.3333%;
+  .change #logo *{
+    width: max-content;
   }
 
   h1.change{
