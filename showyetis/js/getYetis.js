@@ -69,7 +69,7 @@ async function getMyYetis() {
 	document.getElementById("buttons").appendChild(newMessage)
 
 
-	let imgBase = 'https://pye.fra1.digitaloceanspaces.com/images/'
+	let imgBase = 'https://pixelyetis.fra1.digitaloceanspaces.com/images/'
 
 	for (let i = 0; i < yetiAmount; i++) {
 		let index = await yeti.methods.tokenOfOwnerByIndex(senderAddress, i).call()

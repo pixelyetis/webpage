@@ -46,9 +46,9 @@ async function updateInfo() {
 	updateSeasonInfo()
 }
 
-async function updateSeasonInfo(){
-	if(await game.methods.openSeason().call()) document.getElementById('seasonstatus').innerHTML = "It's open season on " + await game.methods.snipableYetis().call() + " Pixel Yetis!"
-	if(!(await game.methods.openSeason().call())) document.getElementById('seasonstatus').innerHTML = 'No Pixel Yetis up for grabs, try again later'
+async function updateSeasonInfo() {
+	if (await game.methods.openSeason().call()) document.getElementById('seasonstatus').innerHTML = "It's open season on " + await game.methods.snipableYetis().call() + " Pixel Yetis!"
+	if (!(await game.methods.openSeason().call())) document.getElementById('seasonstatus').innerHTML = 'No Pixel Yetis up for grabs, try again later'
 }
 
 async function getYetis(_address) {
@@ -76,7 +76,7 @@ async function getYetis(_address) {
 	document.getElementById("buttons").appendChild(newMessage)
 
 
-	let imgBase = 'https://pye.fra1.digitaloceanspaces.com/images/'
+	let imgBase = 'https://pixelyetis.fra1.digitaloceanspaces.com/images/'
 
 	for (let i = 0; i < yetiAmount; i++) {
 		let index = await yeti.methods.tokenOfOwnerByIndex(_address, i).call()
@@ -99,14 +99,14 @@ async function getYetis(_address) {
 	document.getElementById("accuracy").addEventListener('change', updateShotInfo())
 }
 
-async function updateShotInfo(){
+async function updateShotInfo() {
 	let accuracy = Number(document.getElementById("accuracy").value)
 
 	// Correct accuracy if it is too low or too high
-	if(accuracy < 1) accuracy = 1
-	if(accuracy > 100) accuracy = 100
+	if (accuracy < 1) accuracy = 1
+	if (accuracy > 100) accuracy = 100
 
-	if(!Number.isFinite(accuracy)){
+	if (!Number.isFinite(accuracy)) {
 		alert('Accuracy must be a number!')
 		document.getElementById("accuracy").value = 10
 	}
@@ -116,14 +116,14 @@ async function updateShotInfo(){
 
 	document.getElementById("accuracy").value = accuracy
 	document.getElementById("accuracyText").innerHTML = 'Shot Accuracy (' + accuracy + '%)'
-	document.getElementById("cost").innerHTML = 'Shot cost: ' + cost*accuracy + ' ' + tokenName
+	document.getElementById("cost").innerHTML = 'Shot cost: ' + cost * accuracy + ' ' + tokenName
 }
 
 async function shoot(_index) {
 
 	let accuracy = Number(document.getElementById("accuracy").value)
 	// Guard clause for ensuring accuracy is a number
-	if(!Number.isFinite(accuracy)){
+	if (!Number.isFinite(accuracy)) {
 		alert('Accuracy must be a number!')
 		document.getElementById("accuracy").value = 10
 		return
@@ -132,7 +132,7 @@ async function shoot(_index) {
 
 	updateShotInfo()
 	// Check if game contract allowance is enough.
-	if (Number(await token.methods.allowance(senderAddress, await game._address).call()) < Number(await game.methods.baseShot().call())){
+	if (Number(await token.methods.allowance(senderAddress, await game._address).call()) < Number(await game.methods.baseShot().call())) {
 		try {
 			let receipt
 			// This is necessary to allow contract to send funds for taking a shot.
@@ -157,8 +157,8 @@ async function shoot(_index) {
 
 	} catch (err) {
 		console.log(err)
-		err.message.includes("No Pixel Yetis found.")? alert("No Pixel Yetis found in your wallet! Please mint a Pixel Yetis in order to take a shot at one here."):null
-		
+		err.message.includes("No Pixel Yetis found.") ? alert("No Pixel Yetis found in your wallet! Please mint a Pixel Yetis in order to take a shot at one here.") : null
+
 		// let msg = err.message.split('\n')[3].split(':')[2].slice(0,-2)
 		// err.message.includes("")? alert(""):null
 	}
